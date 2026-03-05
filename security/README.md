@@ -1,0 +1,5 @@
+- sensitive outputs
+- sensitive variables
+- install only necessary providers
+- do not embed credentials / store them outside terraform (i.e. vault)
+- do not version control any sensitive information

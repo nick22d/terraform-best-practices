@@ -6,3 +6,4 @@
 - reusable modules
 - deterministic infrastructure
 - good documentation (descriptions, tags, comments, comment blocks, README files)
+- build the infrastructure with two layers (first layer is the one terraform needs like backend etc while the second layer is about the actual infrastructure being deployed)
