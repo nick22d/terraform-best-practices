@@ -1,0 +1,2 @@
+Create reusable modules - Build modular, reusable infrastructure components that standardize deployments across environments
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes
