@@ -1,0 +1,3 @@
+- tflint
+- tfsec
+- terratest
