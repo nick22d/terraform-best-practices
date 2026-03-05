@@ -1,0 +1,8 @@
+- DRY 
+- strong isolation
+- clear governance
+- kiss
+- things that go together live together
+- reusable modules
+- deterministic infrastructure
+- good documentation (descriptions, tags, comments, comment blocks, README files)
