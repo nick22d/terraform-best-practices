@@ -14,8 +14,10 @@
 
 7) Ensure that traffic to the state file is encrypted in transit (i.e. an S3 bucket policy that accepts TLS connections only).
 
-8) Ensure that only authorised parties are allowed to take any actions against the terraform state file repository (i.e. be very specific with a bucket policy as to which entities can take which actions against the bucket).
+8) Ensure that only authorised parties are allowed to take any actions against the terraform state file repository (i.e. be very specific with a bucket policy as to which entities can take which actions against the bucket)/ check for MFA.
 
 9) Make sure that the backend repository is not publicly accessible.
 
 10) Protect the availability of the terraform state file's repository by preventing its deletion (i.e. prevent_destroy in terraform resource, SCP deny policies etc).
+
+For highly regulated environments, also consider keeping a backup of the terraform state in a separate AWS account.
