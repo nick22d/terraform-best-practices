@@ -23,3 +23,49 @@ provider "aws" {
 
 You can choose to omit this block entirely if you don't need to configure any provider-specific arguments.
 https://developer.hashicorp.com/terraform/language/block/provider
+
+Terraform expects provider configuration in the root module.
+https://developer.hashicorp.com/terraform/language/resources/configure
+
+---
+
+When you actually need terraform_data
+
+Typical situations:
+
+Trigger resource replacement when files change
+
+Create artificial dependencies across modules
+
+Pass derived values through state
+
+Replace old null_resource + triggers patterns
+
+terraform_data is essentially the modern replacement for null_resource.
+
+We recommend using configuration management tools or other means to perform actions on the local or remote machine instead of using provisioners. https://developer.hashicorp.com/terraform/language/block/resource
+
+---
+
+Create multiple instances of a resource
+You can use either count or the for_each block to create multiple instances of a resource. The count argument is most suitable for creating multiple instances that are identical or nearly identical. The for_each argument is most suitable for creating multiple similar instances based on attributes defined in a map or set.
+https://developer.hashicorp.com/terraform/language/block/resource
+
+---
+
+a good use case for action_trigger is to run an ansible playbook to push config to the instance after its creation (since provisioners are not recommended):https://developer.hashicorp.com/terraform/language/block/resource
+
+resource "aws_instance" "web" {
+  #...
+
+  lifecycle {
+    action_trigger {
+      events    = [ after_create ]
+      actions   = [action.ansible_playbook.provision]
+    }
+  }
+}
+
+action "ansible_playbook" "provision" {
+  #...
+}
