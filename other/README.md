@@ -69,3 +69,21 @@ resource "aws_instance" "web" {
 action "ansible_playbook" "provision" {
   #...
 }
+
+---
+
+the data "template_file" data source was used with the template provider to render templates with variables for things like cloud-init scripts, config files, startup scripts and JSON policies.
+
+The modern way is to use the templatefile() function
+
+the data "local_file" data source was used with the local provider to read the contents of a file from the local filesystem so Terraform can use that content elsewhere in the configuration
+
+The modern way is to use the file() function
+
+Use:
+
+file() / local_file → when you just need the file content
+
+templatefile() / template_file → when the file contains variables
+
+data "iam_policy_document" ??
