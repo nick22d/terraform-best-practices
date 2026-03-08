@@ -87,3 +87,18 @@ file() / local_file → when you just need the file content
 templatefile() / template_file → when the file contains variables
 
 data "iam_policy_document" ??
+
+---
+
+Use local values in situations where you either reuse a single value in many places to let you change a value in a single place or when the value is the result of a complex expression.
+
+you could define a locals block to create a consistent naming convention, identify your primary subnet, and to set aside environmental configuration settings:
+https://developer.hashicorp.com/terraform/language/values/locals
+
+use separate blocks to organize your related values into visually distinct blocks to make it easier for users to understand your configuration.
+https://developer.hashicorp.com/terraform/language/block/locals
+
+---
+
+Terraform still stores the values of sensitive variables in your state. You can add the ephemeral argument to your variable configuration to omit the variable from state and plan files. 
+https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/language/values/variables.mdx
