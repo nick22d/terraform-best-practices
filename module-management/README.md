@@ -36,3 +36,24 @@ A good module should raise the level of abstraction by describing a new concept 
 We do not recommend writing modules that are just thin wrappers around single other resource types. If you have trouble finding a name for your module that isn't the same as the main resource type inside it, that may be a sign that your module is not creating any new abstraction and so the module is adding unnecessary complexity. Just use the resource type directly in the calling module instead.
 
 https://developer.hashicorp.com/terraform/language/modules/develop
+
+---
+
+module structure !!!
+https://developer.hashicorp.com/terraform/language/modules/develop/structure
+
+---
+
+Providers can be passed down to descendant modules in two ways: either implicitly through inheritance, or explicitly via the providers argument within a module block. These two options are discussed in more detail in the following sections.
+
+A module intended to be called by one or more other modules must not contain any provider blocks. 
+
+Although provider configurations are shared between modules, each module must declare its own provider requirements, so that Terraform can ensure that there is a single version of the provider that is compatible with all modules in the configuration and to specify the source address that serves as the global (module-agnostic) identifier for a provider.
+
+If you are writing a shared Terraform module, constrain only the minimum required provider version using a >= constraint. This should specify the minimum version containing the features your module relies on, and thus allow a user of your module to potentially select a newer provider version if other features are needed by other parts of their overall configuration.
+
+For convenience in simple configurations, a child module automatically inherits default provider configurations from its parent. This means that explicit provider blocks appear only in the root module, and downstream modules can simply declare resources for that provider and have them automatically associated with the root provider configurations.
+We recommend using this approach when a single configuration for each provider is sufficient for an entire configuration.
+
+In more complex situations there may be multiple provider configurations, or a child module may need to use different provider settings than its parent. For such situations, you must pass providers explicitly.
+https://developer.hashicorp.com/terraform/language/modules/develop/providers
