@@ -102,3 +102,9 @@ https://developer.hashicorp.com/terraform/language/block/locals
 
 Terraform still stores the values of sensitive variables in your state. You can add the ephemeral argument to your variable configuration to omit the variable from state and plan files. 
 https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/language/values/variables.mdx
+
+We recommend writing the description from the point of view of a module consumer to help consumers understand why the output exists and how to use it.
+https://developer.hashicorp.com/terraform/language/block/output
+
+The output block typically does not require explicit dependencies so we recommend that when you add an explicit dependency, include a comment to explain why it's necessary.
+https://developer.hashicorp.com/terraform/language/block/output
