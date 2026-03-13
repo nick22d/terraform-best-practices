@@ -57,3 +57,21 @@ We recommend using this approach when a single configuration for each provider i
 
 In more complex situations there may be multiple provider configurations, or a child module may need to use different provider settings than its parent. For such situations, you must pass providers explicitly.
 https://developer.hashicorp.com/terraform/language/modules/develop/providers
+
+When we introduce module blocks, our configuration becomes hierarchical rather than flat: each module contains its own set of resources, and possibly its own child modules, which can potentially create a deep, complex tree of resource configurations.
+
+However, in most cases we strongly recommend keeping the module tree flat, with only one level of child modules, and use a technique similar to the above of using expressions to describe the relationships between the modules:
+
+We call this flat style of module usage module composition, because it takes multiple composable building-block modules and assembles them together to produce a larger system. Instead of a module embedding its dependencies, creating and managing its own copy, the module receives its dependencies from the root module, which can therefore connect the same modules in different ways to produce different results.
+
+Rather than trying to write a module that itself tries to detect whether something exists and create it if not, we recommend applying the dependency inversion approach: making the module accept the object it needs as an argument, via an input variable.
+
+We recommend validating your configuration to help capture and test for assumptions and guarantees. This helps future maintainers understand the configuration design and intent. Configuration validation returns useful information about errors earlier and in context, helping consumers more easily diagnose issues in their configurations.
+
+As with conventional modules, we suggest using this technique only when the module raises the level of abstraction in some way, in this case by encapsulating exactly how the data is retrieved.
+
+A common use of this technique is when a system has been decomposed into several subsystem configurations but there is certain infrastructure that is shared across all of the subsystems, such as a common IP network. In this situation, we might write a shared module called join-network-aws which can be called by any configuration that needs information about the shared network when deployed in AWS:
+https://developer.hashicorp.com/terraform/language/modules/develop/composition
+
+We recommend that modules distributed via other protocols still use the standard module structure so that they can be used in a similar way as a registry module or be published on the registry at a later time.
+https://developer.hashicorp.com/terraform/language/modules/develop/publish
