@@ -20,4 +20,6 @@
 
 10) Protect the availability of the terraform state file's repository by preventing its deletion (i.e. prevent_destroy in terraform resource, SCP deny policies etc).
 
+11) Use audit logs to track state access over time (https://developer.hashicorp.com/terraform/language/manage-sensitive-data)
+
 For highly regulated environments, also consider keeping a backup of the terraform state in a separate AWS account.
