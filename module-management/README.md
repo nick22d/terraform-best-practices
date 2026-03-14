@@ -75,3 +75,15 @@ https://developer.hashicorp.com/terraform/language/modules/develop/composition
 
 We recommend that modules distributed via other protocols still use the standard module structure so that they can be used in a similar way as a registry module or be published on the registry at a later time.
 https://developer.hashicorp.com/terraform/language/modules/develop/publish
+
+Use a 'moved' block when moving or renaming a module without destroying/replacing existing resources
+
+Removing a moved block is a breaking change because any configurations that refer to the old address will plan to delete the existing object instead of move it. We strongly recommend that you retain all historical moved blocks from earlier versions of your modules to preserve the upgrade path for users of any previous version.
+
+If you do decide to remove moved blocks, proceed with caution. It can be safe to remove moved blocks when you are maintaining private modules within an organization and you are certain that all users have successfully run terraform apply with your new module version.
+
+If you need to rename or move the same object twice, we recommend chaining moved blocks to document the full change history:
+https://developer.hashicorp.com/terraform/language/modules/develop/refactoring
+
+Terraform recognizes paths that begin with a / or drive letter as absolute paths. Terraform copies modules specified with an absolute path to the local module cache as a package. We don't recommend using absolute filesystem paths to refer to Terraform modules because doing so can couple your configuration to the filesystem layout of a particular computer.
+https://developer.hashicorp.com/terraform/language/block/module
