@@ -8,3 +8,8 @@ We recommend manually writing the resource block when you know how to configure 
 You can remove import blocks from your configuration after importing resources, but we recommend keeping them as an historical artifact.
 https://developer.hashicorp.com/terraform/language/import/single-resource
 
+The import block imports existing infrastructure resources into Terraform. You can add an import block to any Terraform configuration file, but we recommend either creating an imports.tf file for all import configurations or placing each import block beside the destination resource block.
+https://developer.hashicorp.com/terraform/language/block/import
+
+
+
