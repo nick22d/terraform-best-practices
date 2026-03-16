@@ -22,4 +22,8 @@
 
 11) Use audit logs to track state access over time (https://developer.hashicorp.com/terraform/language/manage-sensitive-data)
 
+12) Both of these protections can be bypassed with the -force flag if you're confident you're making the right decision. Even if using the -force flag, we recommend making a backup of the state with terraform state pull prior to forcing the overwrite. 
+terraform state pull > terraform.tfstate.backup
+(https://developer.hashicorp.com/terraform/language/state/backends)
+
 For highly regulated environments, also consider keeping a backup of the terraform state in a separate AWS account.

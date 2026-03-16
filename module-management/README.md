@@ -87,3 +87,6 @@ https://developer.hashicorp.com/terraform/language/modules/develop/refactoring
 
 Terraform recognizes paths that begin with a / or drive letter as absolute paths. Terraform copies modules specified with an absolute path to the local module cache as a package. We don't recommend using absolute filesystem paths to refer to Terraform modules because doing so can couple your configuration to the filesystem layout of a particular computer.
 https://developer.hashicorp.com/terraform/language/block/module
+
+Reusable module opportunity. You have identified a subsection of your configuration that would make for a good module. If you create the same set of resources in multiple configurations, we recommend grouping those resources into a module and reusing it across your organization.
+https://developer.hashicorp.com/terraform/language/state/refactor

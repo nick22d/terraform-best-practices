@@ -1,5 +1,5 @@
 - DRY 
-- strong isolation
+- strong isolation / reduce the blast radius
 - clear governance
 - kiss
 - things that go together live together

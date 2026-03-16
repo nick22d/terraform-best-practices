@@ -109,3 +109,6 @@ https://developer.hashicorp.com/terraform/language/block/output
 The output block typically does not require explicit dependencies so we recommend that when you add an explicit dependency, include a comment to explain why it's necessary.
 https://developer.hashicorp.com/terraform/language/block/output
 
+We recommend using dynamic references rather than hard-coding information about resources in another configuration. Hard-coding information requires you to manually update the configuration whenever the data changes, which can lead to errors in your configuration or your deployed resources.
+https://developer.hashicorp.com/terraform/language/state/refactor
+
