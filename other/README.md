@@ -112,3 +112,8 @@ https://developer.hashicorp.com/terraform/language/block/output
 We recommend using dynamic references rather than hard-coding information about resources in another configuration. Hard-coding information requires you to manually update the configuration whenever the data changes, which can lead to errors in your configuration or your deployed resources.
 https://developer.hashicorp.com/terraform/language/state/refactor
 
+Alternatively, you can use the terraform state rm command to remove a resource from state, but we recommend using the removed block instead. This is because the removed block lets you preview the results of the operation, which makes it a safer way to remove resources.
+https://developer.hashicorp.com/terraform/language/state/remove
+
+As your infrastructure grows, managing Terraform configurations becomes increasingly complex. Stacks are a powerful configuration layer in HCP Terraform that simplifies managing your infrastructure modules and then repeatedly deploying that infrastructure. Stacks replace Terraform's traditional root module structure with a new component-based architecture built on top of your Terraform modules. Stacks let you to provision and coordinate your infrastructure lifecycle at scale, offering an organized and reusable approach that expands upon infrastructure as code (IaC).
+https://developer.hashicorp.com/terraform/language/stacks

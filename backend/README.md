@@ -1,5 +1,8 @@
 # Best practices on Terraform's backend
 
+By default, Terraform stores state locally in a file named terraform.tfstate. When working with Terraform in a team, use of a local file makes Terraform usage complicated because each user must make sure they always have the latest state data before running Terraform and make sure that nobody else runs Terraform at the same time.
+https://developer.hashicorp.com/terraform/language/state/remote
+
 1) Set up a remote backend to allow for a collaborative environment (i.e. an S3 bucket or Terraform Cloud). By default, Terraform's backend is local.
 
 2) In an enterprise where an entire team would be expected to deploy resources with Terraform, there is the risk of encountering conflicting changes. To prevent this, enable state locking (i.e. an S3 bucket with a DynamoDB table).
@@ -27,3 +30,12 @@ terraform state pull > terraform.tfstate.backup
 (https://developer.hashicorp.com/terraform/language/state/backends)
 
 For highly regulated environments, also consider keeping a backup of the terraform state in a separate AWS account.
+
+State locking happens automatically on all operations that could write state. You do not see any message that it happens. If state locking fails, Terraform does not continue. You can disable state locking for most commands with the -lock=false flag, but we do not recommend it.
+
+Terraform has a force-unlock command to manually unlock the state if unlocking failed.
+
+Be very careful with this command. If you unlock the state when someone else is holding the lock it could cause multiple writers. Force unlock should only be used to unlock your own lock in the situation where automatic unlocking failed.
+
+To protect you, the force-unlock command requires a unique lock ID. Terraform will output this lock ID if unlocking fails. This lock ID acts as a nonce, ensuring that locks and unlocks target the correct lock.
+https://developer.hashicorp.com/terraform/language/state/locking

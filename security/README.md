@@ -24,3 +24,5 @@ https://developer.hashicorp.com/terraform/language/manage-sensitive-data
 we recommend using write-only arguments for passing ephemeral values to resources. For example, you can use an ephemeral resource to generate a random password and pass it to the password_wo write-only argument:
 https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only
 
+Terraform evaluates the command in a local shell and can use environment variables for variable substitution. We do not recommend using Terraform variables for variable substitution because doing so can lead to shell injection vulnerabilities. Instead, you should pass Terraform variables to a command through the environment parameter and use environment variable substitution instead. Refer to the following OWASP article for more information about injection flaws: Code Injection.
+https://developer.hashicorp.com/terraform/language/block/removed
