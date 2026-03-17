@@ -117,3 +117,18 @@ https://developer.hashicorp.com/terraform/language/state/remove
 
 As your infrastructure grows, managing Terraform configurations becomes increasingly complex. Stacks are a powerful configuration layer in HCP Terraform that simplifies managing your infrastructure modules and then repeatedly deploying that infrastructure. Stacks replace Terraform's traditional root module structure with a new component-based architecture built on top of your Terraform modules. Stacks let you to provision and coordinate your infrastructure lifecycle at scale, offering an organized and reusable approach that expands upon infrastructure as code (IaC).
 https://developer.hashicorp.com/terraform/language/stacks
+
+Before writing your component configuration, we recommend planning and designing how you want to use your new Stack:
+
+Understand your existing infrastructure and break it down into manageable components.
+Understand how you want to deploy the infrastructure your Stack defines.
+Align your Stack’s component organization with your deployment strategy.
+You aim to create a flexible and reusable component configuration, enabling you to manage your infrastructure lifecycle efficiently.
+
+We recommend structuring your Stacks along technical boundaries to keep them modular and manageable. For example, you can create a dedicated Stack for shared services, such as networking infrastructure for VPCs, subnets, or routing tables, and separate Stacks for application components that consume those shared services. This separation lets you manage shared services independently while passing information between Stacks. 
+https://developer.hashicorp.com/terraform/language/stacks/design
+
+We recommend designing your Stack before you begin writing your configuration files.
+
+All of your Stack’s configuration files must use the .tfcomponent.hcl file type. You can set up your component configuration into multiple files as in traditional Terraform configurations. For example, you can have variables.tfcomponent.hcl, providers.tfcomponent.hcl, and we recommend creating one root-level file for your component blocks, such as components.tfcomponent.hcl.
+https://developer.hashicorp.com/terraform/language/stacks/component/config
