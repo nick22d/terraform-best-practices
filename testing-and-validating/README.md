@@ -1,0 +1,2 @@
+Postconditions can serve as static guardrails to enforce mandatory configuration aspects on your data and resource blocks. For verifying infrastructure dynamically against external or changing conditions, we recommend using the check blocks, which run as the final step of a Terraform operation after postconditions. 
+https://developer.hashicorp.com/terraform/language/validate
