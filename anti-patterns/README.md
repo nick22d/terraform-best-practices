@@ -396,3 +396,5 @@ account: shared-services
 account: production
 account: staging
 Each account has multiple states inside.
+
+- a single repo for all Terraform in a large enterprise is usually an anti-pattern (but so is the practice of having too many repos)

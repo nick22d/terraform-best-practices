@@ -98,3 +98,10 @@ https://developer.hashicorp.com/terraform/language/tests
 
 Use mocking
 https://developer.hashicorp.com/terraform/language/tests/mocking
+
+A module should have its own repo when it is:
+
+- reusable across multiple projects/teams
+- needs versioning
+- has its own lifecycle
+- has multiple consumers
