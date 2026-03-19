@@ -105,3 +105,52 @@ A module should have its own repo when it is:
 - needs versioning
 - has its own lifecycle
 - has multiple consumers
+
+Module repository names
+The Terraform registry requires that repositories match a naming convention for all modules that you publish to the registry. Module repositories must use this three-part name terraform-<PROVIDER>-<NAME>, where <NAME> reflects the type of infrastructure the module manages and <PROVIDER> is the main provider the module uses. The <NAME> segment can contain additional hyphens, for example, terraform-google-vault or terraform-aws-ec2-instance.
+
+Module structure
+Terraform modules define self-contained, reusable pieces of infrastructure-as-code.
+
+Use modules to group together logically related resources that you need to provision together. For example:
+
+A networking module that defines a VPC, along with its subnets, gateway, and security groups.
+An application module defining all resources required for each deployment. This stack could include web servers, databases, storage, and supported networking.
+Review the module creation recommended pattern documentation and standard module structure for guidance on how to structure your modules.
+
+Local modules
+Local modules are sourced from local disk rather than a remote module registry. We recommend publishing your modules to a module registry, such as the HCP Terraform private registry, to easily version, share, and reuse modules across your organization. If you cannot use a module registry, using local modules can simplify maintaining and updating your code.
+
+We recommend that you define child modules in the ./modules/<module_name> directory.
+
+Repository structure
+How you structure your modules and Terraform configuration in version control significantly impacts versioning and operations. We recommend that you store your actual infrastructure configuration separately from your module code.
+
+Store each module in an individual repository. This lets you independently version each module and makes it easier to publish your modules in the private Terraform registry.
+
+Organize your infrastructure configuration in repositories that group together logically-related resources. For example, a single repository for a web application that requires compute, networking, and database resources . By separating your resources into groups, you limit the number of resources that may be impacted by failures for any operation.
+
+Another approach is to group all modules and infrastructure configuration into a single monolithic repository, or monorepo. For example, a monorepo may define a collection of local modules for each component of the infrastructure stack, and deploy them in the root module.
+
+.
+├── modules
+│   ├── function
+│   │   ├── main.tf      # contains aws_iam_role, aws_lambda_function
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── queue
+│   │   ├── main.tf      # contains aws_sqs_queue
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── vpc
+│       ├── main.tf      # contains aws_vpc, aws_subnet
+│       ├── outputs.tf
+│       └── variables.tf
+├── main.tf
+├── outputs.tf
+└── variables.tf
+
+The advantage of monolithic repositories is having a single source of truth that tracks every infrastructure change. However, monolithic repositories can complicate your CI/CD automation: since any code change triggers a deployment that operates on your entire repository, your workflow must target only the modified directories. You also lose the granular access control, since anyone with repository access can modify any file in it.
+
+If your organization requires a monolithic approach, HCP Terraform and Terraform Enterprise let you scope a workspace to a specific directory in a repository, simplifying your workflows.
+https://developer.hashicorp.com/terraform/language/style

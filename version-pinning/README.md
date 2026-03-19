@@ -24,3 +24,33 @@ The provider versions
 This ensures deterministic, reproducible infrastructure deployments.
 
 - pin module versions as well
+
+Version pinning
+To prevent provider and module upgrades from introducing unintentional changes to your infrastructure, use version pinning.
+
+Specify provider versions using the required_providers block. Terraform version constraints support a range of accepted versions.
+
+Pin modules to a specific major and minor version as shown in the example below to ensure stability. You can use looser restrictions if you are certain that the module does not introduce breaking changes outside of major version updates.
+
+We also recommend that you set a minimum required version of the Terraform binary using the required_version in your terraform block. This requires all operators to use a Terraform version that has all of your configuration's required features.
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.34.0"
+    }
+  }
+
+  required_version = ">= 1.7"
+}
+The above example pins the version of the hashicorp/aws provider to version 5.34.0, and requires that operators use Terraform 1.7 or newer.
+
+For modules sourced from a registry, use the version parameter in the module block to pin the version. For local modules, Terraform ignores the version parameter.
+
+module "vault_starter" {
+  source  = "hashicorp/vault-starter/aws"
+  version = "1.0.0"
+  ##...
+}
+https://developer.hashicorp.com/terraform/language/style
