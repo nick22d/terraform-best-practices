@@ -1,6 +1,6 @@
 - circulating TF plans manually with terraform plan -out file option
 
-- premature modularisation
+- premature modularisation / Start simple → abstract only after real reuse patterns emerge
 
 - copy-pasting instead of using modules (drift between copies, maintenance nightmare, no standardization)
 
