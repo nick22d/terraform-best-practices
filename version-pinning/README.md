@@ -22,3 +22,5 @@ The Terraform CLI version
 The provider versions
 
 This ensures deterministic, reproducible infrastructure deployments.
+
+- pin module versions as well
