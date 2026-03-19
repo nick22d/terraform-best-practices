@@ -90,3 +90,11 @@ https://developer.hashicorp.com/terraform/language/block/module
 
 Reusable module opportunity. You have identified a subsection of your configuration that would make for a good module. If you create the same set of resources in multiple configurations, we recommend grouping those resources into a module and reusing it across your organization.
 https://developer.hashicorp.com/terraform/language/state/refactor
+
+Terraform tests let authors validate that module configuration updates do not introduce breaking changes. Tests run against test-specific, short-lived resources, preventing any risk to your existing infrastructure or state.
+
+We recommend defining your variables and provider blocks first, at the beginning of the test file.
+https://developer.hashicorp.com/terraform/language/tests
+
+Use mocking
+https://developer.hashicorp.com/terraform/language/tests/mocking
