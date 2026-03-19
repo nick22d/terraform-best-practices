@@ -7,3 +7,6 @@ Use # for both single- and multi-line comments. The // and /* */ comment syntaxe
 # and leaving its associated gateway.
 resource "google_compute_vpn_tunnel" "tunnel1" {
   ## ...
+
+
+https://developer.hashicorp.com/terraform/language/style
