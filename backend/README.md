@@ -39,3 +39,11 @@ Be very careful with this command. If you unlock the state when someone else is 
 
 To protect you, the force-unlock command requires a unique lock ID. Terraform will output this lock ID if unlocking fails. This lock ID acts as a nonce, ensuring that locks and unlocks target the correct lock.
 https://developer.hashicorp.com/terraform/language/state/locking
+
+State sharing
+Since your state contains sensitive information, avoid sharing full state files when possible.
+
+If you use HCP Terraform or Terraform Enterprise and need to reference resources across workspaces, use the tfe_outputs data source.
+
+If you do not use HCP Terraform or Terraform Enterprise but still need to reference data about other infrastructure resources, use data sources to query the provider. For example, you can use the aws_instance data source to look up an AWS EC2 instance by its ID or tags.
+https://developer.hashicorp.com/terraform/language/style

@@ -10,3 +10,12 @@ resource "google_compute_vpn_tunnel" "tunnel1" {
 
 
 https://developer.hashicorp.com/terraform/language/style
+
+Comments
+The Terraform language supports three different syntaxes for comments:
+
+# begins a single-line comment, ending at the end of the line.
+// also begins a single-line comment, as an alternative to #.
+/* and */ are start and end delimiters for a comment that might span over multiple lines.
+The # single-line comment style is the default comment style and should be used in most cases. Automatic configuration formatting tools may automatically transform // comments into # comments, since the double-slash style is not idiomatic.
+https://developer.hashicorp.com/terraform/language/syntax/configuration
