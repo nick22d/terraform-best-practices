@@ -57,3 +57,26 @@ https://developer.hashicorp.com/terraform/language/style
 
 The version argument in provider configurations is deprecated, and Terraform will remove it in a future version. Instead, declare provider version constraints in the terraform block's required_providers block.
 https://developer.hashicorp.com/terraform/language/block/provider
+
+required_version
+Specifies which version of the Terraform CLI is allowed to run the configuration.
+
+terraform {
+  required_version = "<Terraform version>"
+  # . . .
+}
+
+The required_version configuration applies only to the version of Terraform CLI and not versions of provider plugins. 
+
+required_providers
+Specifies all provider plugins required to create and manage resources specified in the configuration.
+
+terraform {
+  required_providers {
+    <PROVIDER> {}
+  }
+  # . . .
+}
+
+Each local provider name maps to a source address and a version constraint. Refer to each Terraform provider’s documentation in the public Terraform Registry, or your private registry, for instructions on how to configure attributes in the required_providers block.
+https://developer.hashicorp.com/terraform/language/block/terraform
