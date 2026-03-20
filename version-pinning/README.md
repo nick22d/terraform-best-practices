@@ -54,3 +54,6 @@ module "vault_starter" {
   ##...
 }
 https://developer.hashicorp.com/terraform/language/style
+
+The version argument in provider configurations is deprecated, and Terraform will remove it in a future version. Instead, declare provider version constraints in the terraform block's required_providers block.
+https://developer.hashicorp.com/terraform/language/block/provider

@@ -132,3 +132,130 @@ We recommend designing your Stack before you begin writing your configuration fi
 
 All of your Stack’s configuration files must use the .tfcomponent.hcl file type. You can set up your component configuration into multiple files as in traditional Terraform configurations. For example, you can have variables.tfcomponent.hcl, providers.tfcomponent.hcl, and we recommend creating one root-level file for your component blocks, such as components.tfcomponent.hcl.
 https://developer.hashicorp.com/terraform/language/stacks/component/config
+
+Define provider configurations in the root module of your Terraform configuration. Child modules receive their provider configurations from their parent modules, so we strongly recommend against defining provider blocks in child modules.
+https://developer.hashicorp.com/terraform/language/block/provider
+
+To create multiple configurations for a given provider, include multiple provider blocks with the same provider name, then add the alias argument to each additional provider configuration to give it a unique identifier.
+
+provider "exampleName" {
+  region = "us-east-1"
+}
+
+provider "exampleName" {
+  alias  = "west"
+  region = "us-west-1"
+}
+
+The version argument in provider configurations is deprecated, and Terraform will remove it in a future version. Instead, declare provider version constraints in the terraform block's required_providers block.
+https://developer.hashicorp.com/terraform/language/block/provider
+
+Basic provider configuration
+The following example configures the google provider with a specific project and region. In the terraform block's required_providers block you define the provider version you want to use, where to source the provider from, and the local name of the provider:
+
+terraform.tf
+
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
+  }
+}
+
+You can configure the provider with the provider block in the root module of your configuration.
+
+main.tf
+
+provider "google" {
+  project = "acme-app"
+  region  = "us-central1"
+}
+https://developer.hashicorp.com/terraform/language/block/provider
+
+Pass provider configurations to a child module
+When you define a provider in your root module, Terraform implicitly passes that provider configuration to any child modules to ensure all modules use the same configuration.
+
+In the following example, the root module defines an AWS provider configuration and Terraform implicitly passes that configuration to a child module:
+
+main.tf
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+module "vpc" {
+  source = "./modules/vpc"
+}
+
+The child module uses the provider configuration passed from the root module:
+
+modules/vpc/main.tf
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "Main VPC"
+  }
+}
+
+The aws_vpc resource inherits the same AWS provider configuration from the root module, and Terraform creates the aws_vpc resource in the us-west-2 region.
+
+Child modules do not inherit provider source or version requirements, so you must explicitly define those within a child module. Learn more about inheriting providers in modules.
+
+Using an alternate provider configuration in a child module
+To use an aliased provider configuration in a child module, the child module must declare the alias using the configuration_aliases argument in the required_providers block.
+
+In the following example, the root module passes the aws.west alias to the web-server child module:
+
+main.tf
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+provider "aws" {
+  alias  = "west"
+  region = "us-west-2"
+}
+
+module "web-server" {
+  source = "./modules/web-server"
+  providers = {
+    aws.west = aws.west
+  }
+}
+
+The following configuration_aliases argument declares that the child module expects to receive a provider configuration it can reference as aws.west. Without this declaration, Terraform raises an error when the module tries to reference aws.west in its resources.
+
+modules/web-server/main.tf
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+      configuration_aliases = [aws.west]
+    }
+  }
+}
+
+data "aws_ami" "amazon_linux" {
+  provider = aws.west
+
+  #...
+}
+
+Modules have special requirements for providers, refer to Providers within modules to learn more.
+https://developer.hashicorp.com/terraform/language/block/provider
