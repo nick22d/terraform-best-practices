@@ -26,3 +26,11 @@ https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-o
 
 Terraform evaluates the command in a local shell and can use environment variables for variable substitution. We do not recommend using Terraform variables for variable substitution because doing so can lead to shell injection vulnerabilities. Instead, you should pass Terraform variables to a command through the environment parameter and use environment variable substitution instead. Refer to the following OWASP article for more information about injection flaws: Code Injection.
 https://developer.hashicorp.com/terraform/language/block/removed
+
+Use secrets storage
+Your configuration may rely on sensitive values, such as provider credentials. Although you can mark certain variables as sensitive to prevent displaying them as plaintext in run output, a more robust solution is to use secrets storage such as HashiCorp Vault
+
+Vault securely stores sensitive information such as credentials and provides granular access control. You can integrate Vault into your Terraform configuration using the Vault provider. If you deploy your infrastructure to a major cloud provider, such as AWS, you can also generate short-lived credentials with Vault or use dynamic provider credentials, which prevents having to store credentials.
+
+Vault also integrates into many popular CI/CD solutions such as GitHub, Jenkins, and CircleCI. Vault provides a central system to store and access data, which lets CI/CD pipelines push and pull secrets programmatically.
+https://developer.hashicorp.com/terraform/intro/phases/adopt

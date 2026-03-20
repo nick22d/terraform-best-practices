@@ -259,3 +259,29 @@ data "aws_ami" "amazon_linux" {
 
 Modules have special requirements for providers, refer to Providers within modules to learn more.
 https://developer.hashicorp.com/terraform/language/block/provider
+
+You can use the following methods to control the order that Terraform follows to create resources:
+
+Add the depends_on meta-argument to the resource block and reference the upstream resource that Terraform must create first. For an example configuration, refer to Specify a dependency.
+
+Add replace_triggered_by lifecycle rule to the resource block. This argument adds dependencies between independent resources by forcing Terraform to replace the parent resource when there is a change to a referenced resource or resource attribute. For an example configuration, refer to Specify triggers that replace resources.
+https://developer.hashicorp.com/terraform/language/resources/configure
+
+Implement code reviews
+Implement good code practices for your Terraform configuration, including using pull requests for code changes and performing proper code reviews. Code reviews can prevent introducing errors into your infrastructure configuration. They also help team members share their knowledge of the code base and enforce coding standards.
+
+Use the integrations offered by your version control system to help with your code reviews. For example, HCP Terraform's VCS integration generates speculative plans for each pull request, showing the exact changes that Terraform will make to your infrastructure.
+
+Automate deployments with CI/CD
+A CI/CD pipeline offers a consistent process for shipping new features and fixes. By storing your Terraform configuration in version control, you define a single source of truth for your infrastructure configuration and can automate your deployments. You can configure a CI pipeline to automatically start a Terraform plan and apply operation for any changes to your code.
+
+Terraform integrates with many automation solutions. If you do not have an existing CI/CD workflow, HashiCorp's Setup Terraform GitHub action sets up and configures the Terraform CLI in your Github Actions workflow.
+https://developer.hashicorp.com/terraform/intro/phases/collaborate
+
+As Terraform usage expands across your organization, you will need to decide how to define boundaries of infrastructure ownership.
+
+Divide infrastructure responsibility
+It is common for different teams to focus on different parts of your organization's infrastructure. For example, the networking team may manage the VPCs, while the application team only needs to know where to deploy their application and focuses on configuring servers and databases. In this scenario, there is a division of responsibilities but the application team still needs to access data about the networking resources for their own configuration.
+
+Terraform lets you reference data about other resources in your configuration without having to manage them in the same state file, allowing you to maintain distinct areas of ownership and infrastructure decoupling. You can use data sources to query a provider for more data about a particular resource, or reference output values from another state file using the remote state data source. HCP Terraform lets you explicitly grant access to your workspace state file to only the workspaces that need it, reducing access to potentially sensitive data. You can also use the tfe_outputs data source to access the outputs of another HCP Terraform workspace.
+https://developer.hashicorp.com/terraform/intro/phases/scale

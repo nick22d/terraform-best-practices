@@ -154,3 +154,15 @@ The advantage of monolithic repositories is having a single source of truth that
 
 If your organization requires a monolithic approach, HCP Terraform and Terraform Enterprise let you scope a workspace to a specific directory in a repository, simplifying your workflows.
 https://developer.hashicorp.com/terraform/language/style
+
+We recommend using modules early in your Terraform adoption process to support consistent infrastructure configuration. As your Terraform usage scales, a central module registry helps teams find and use your modules rather than rewriting the same code.
+
+Terraform supports multiple module distribution options, but we recommend that you use a native Terraform module registry such as HCP Terraform or Terraform Enterprise. These both use the module registry protocol, which is the Terraform-specific protocol to discover metadata about modules available for installation and to locate the distribution package for a selected module.
+
+If you cannot use a native module registry, there are other source options such as Git repositories or AWS S3.
+
+Modules also help teams establish infrastructure configuration standards. For example, you can write a module to create a database used by your application that includes all of the defaults that your architecture requires. The module can define the database size, type, and handle all of the required networking. This ensures that module consumers provision infrastructure in line with your organization standards and requirements.
+
+Since modules define their own inputs, you can decide which parameters are configurable by the user. For example, you might want to allow them to change the size of the cluster, but not let them change the engine type.
+
+https://developer.hashicorp.com/terraform/intro/phases/scale
