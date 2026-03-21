@@ -6,7 +6,7 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
 
 ---
 
-## Structure
+<h2 align="center">Structure</h2>
 
 <p align="center">
     <img src="assets/images/structure.png">
