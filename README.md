@@ -22,10 +22,7 @@ This project has been structured in the following way:
 
 ## Engineering Principles
 
-| Principle | Description |
-|-----------|-------------|
-| [Evolutionary Design](./docs/principles/evolutionary_design.md) | Systems should evolve over time |
-| [YAGNI](./docs/principles/yagni.md) | Don't build what you don't need yet |
-| [KISS](./docs/principles/kiss.md) | Prefer simple solutions |
-| [Separation of Concerns](./docs/principles/separation_of_concerns.md) | Reduce blast radius |
-| [Everything as Code](./docs/principles/everything_as_code.md) | Version control everything |
+[![Evolutionary Design](https://img.shields.io/badge/Evolutionary-Design-blue)](./docs/principles/evolutionary_design.md)
+[![YAGNI](https://img.shields.io/badge/YAGNI-Principle-blue)](./docs/principles/yagni.md)
+[![KISS](https://img.shields.io/badge/KISS-Principle-blue)](./docs/principles/kiss.md)
+[![Separation of Concerns](https://img.shields.io/badge/Separation-Of%20Concerns-blue)](./docs/principles/separation_of_concerns.md)
