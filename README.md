@@ -22,4 +22,4 @@ This project has been structured in the following way:
 
 ## Engineering Principles
 
-**[Evolutionary Design](./docs/principles/evolutionary_design.md)** | **[YAGNI](./docs/principles/yagni.md)** | **[KISS](./docs/principles/kiss.md)** | **[Separation of Concerns](./docs/principles/separation_of_concerns.md)** | **[Everything as Code](./docs/principles/everything_as_code.md)**
+**[Evolutionary Design](./docs/principles/evolutionary_design.md)** | **[YAGNI](./docs/principles/yagni.md)** | **[KISS](./docs/principles/kiss.md)** | **[Separation of Concerns](./docs/principles/separation_of_concerns.md)** | **[DRY](./docs/principles/everything_as_code.md)** | **[Determinism](./docs/principles/everything_as_code.md)** | **[Maintainability](./docs/principles/everything_as_code.md)**
