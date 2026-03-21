@@ -8,7 +8,9 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
 
 ## Structure
 
-![Diagram](./assets/images/structure.png)
+<p align="center">
+    <img src="./assets/images/structure.png>
+</p>
 
 This project has been structured in the following way:
 
