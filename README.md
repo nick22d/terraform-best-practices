@@ -22,7 +22,4 @@ This project has been structured in the following way:
 
 ## Engineering Principles
 
-[![Evolutionary Design](https://img.shields.io/badge/Evolutionary-Design-blue)](./docs/principles/evolutionary_design.md)
-[![YAGNI](https://img.shields.io/badge/YAGNI-Principle-blue)](./docs/principles/yagni.md)
-[![KISS](https://img.shields.io/badge/KISS-Principle-blue)](./docs/principles/kiss.md)
-[![Separation of Concerns](https://img.shields.io/badge/Separation-Of%20Concerns-blue)](./docs/principles/separation_of_concerns.md)
+[ Evolutionary Design ] [ YAGNI ] [ KISS ] [ Separation of Concerns ]
