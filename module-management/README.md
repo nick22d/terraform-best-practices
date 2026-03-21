@@ -166,3 +166,9 @@ Modules also help teams establish infrastructure configuration standards. For ex
 Since modules define their own inputs, you can decide which parameters are configurable by the user. For example, you might want to allow them to change the size of the cluster, but not let them change the engine type.
 
 https://developer.hashicorp.com/terraform/intro/phases/scale
+
+Best Practices for dynamic Blocks
+Overuse of dynamic blocks can make configuration hard to read and maintain, so we recommend using them only when you need to hide details in order to build a clean user interface for a re-usable module. Always write nested blocks out literally where possible.
+
+If you find yourself defining most or all of a resource block's arguments and nested blocks using directly-corresponding attributes from an input variable then that might suggest that your module is not creating a useful abstraction. It may be better for the calling module to define the resource itself then pass information about it into your module. For more information on this design tradeoff, see When to Write a Module and Module Composition.
+https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks
