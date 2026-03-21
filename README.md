@@ -18,4 +18,14 @@ This project has been structured in the following way:
 
 3) Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
 
-***Note:*** Many best practices are related to more than one engineering principle.
+**Note:** Many best practices are related to more than one engineering principle.
+
+## Engineering Principles
+
+| Principle | Description |
+|-----------|-------------|
+| [Evolutionary Design](./docs/principles/evolutionary_design.md) | Systems should evolve over time |
+| [YAGNI](./docs/principles/yagni.md) | Don't build what you don't need yet |
+| [KISS](./docs/principles/kiss.md) | Prefer simple solutions |
+| [Separation of Concerns](./docs/principles/separation_of_concerns.md) | Reduce blast radius |
+| [Everything as Code](./docs/principles/everything_as_code.md) | Version control everything |
