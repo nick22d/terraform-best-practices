@@ -49,3 +49,6 @@ Overuse of dynamic blocks can make configuration hard to read and maintain, so w
 
 If you find yourself defining most or all of a resource block's arguments and nested blocks using directly-corresponding attributes from an input variable then that might suggest that your module is not creating a useful abstraction. It may be better for the calling module to define the resource itself then pass information about it into your module. For more information on this design tradeoff, see When to Write a Module and Module Composition.
 https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks
+
+The only situation where it's appropriate to use any is if you will pass the given value directly to some other system without directly accessing its contents. For example, it's okay to use a variable of type any if you use it only with jsonencode to pass the full value directly to a resource, as shown in the following example:
+https://developer.hashicorp.com/terraform/language/expressions/type-constraints

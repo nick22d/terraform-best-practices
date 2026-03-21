@@ -80,3 +80,19 @@ terraform {
 
 Each local provider name maps to a source address and a version constraint. Refer to each Terraform provider’s documentation in the public Terraform Registry, or your private registry, for instructions on how to configure attributes in the required_providers block.
 https://developer.hashicorp.com/terraform/language/block/terraform
+
+Best practices
+We recommend implementing the following best practices when configuration version constraints.
+
+Module versions
+Require specific versions to ensure that updates only happen when convenient to you when your infrastructure depends on third-party modules.
+
+Specify version ranges when your organization consistently uses semantic versioning for modules it maintains.
+
+Specify version ranges when your organization follows a well-defined release process that avoids unwanted updates.
+
+Terraform core and provider versions
+Reusable modules should constrain only their minimum allowed versions of Terraform and providers, such as >= 0.12.0. This helps avoid known incompatibilities, while allowing the user of the module flexibility to upgrade to newer versions of Terraform without altering the module.
+
+Root modules should use a ~> constraint to set both a lower and upper bound on versions for each provider they depend on.
+https://developer.hashicorp.com/terraform/language/expressions/version-constraints

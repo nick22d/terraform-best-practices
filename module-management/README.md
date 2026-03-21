@@ -172,3 +172,19 @@ Overuse of dynamic blocks can make configuration hard to read and maintain, so w
 
 If you find yourself defining most or all of a resource block's arguments and nested blocks using directly-corresponding attributes from an input variable then that might suggest that your module is not creating a useful abstraction. It may be better for the calling module to define the resource itself then pass information about it into your module. For more information on this design tradeoff, see When to Write a Module and Module Composition.
 https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks
+
+Best practices
+We recommend implementing the following best practices when configuration version constraints.
+
+Module versions
+Require specific versions to ensure that updates only happen when convenient to you when your infrastructure depends on third-party modules.
+
+Specify version ranges when your organization consistently uses semantic versioning for modules it maintains.
+
+Specify version ranges when your organization follows a well-defined release process that avoids unwanted updates.
+
+Terraform core and provider versions
+Reusable modules should constrain only their minimum allowed versions of Terraform and providers, such as >= 0.12.0. This helps avoid known incompatibilities, while allowing the user of the module flexibility to upgrade to newer versions of Terraform without altering the module.
+
+Root modules should use a ~> constraint to set both a lower and upper bound on versions for each provider they depend on.
+https://developer.hashicorp.com/terraform/language/expressions/version-constraints
