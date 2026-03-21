@@ -12,14 +12,16 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
 
 This project has been structured in the following way:
 
-1) At the top, we have defined a set of engineering principles. These principles function as the drivers behind all of our infrastructure engineering decisions.
+**1)** At the top, we have defined a set of engineering principles. These principles function as the drivers behind all of our infrastructure engineering decisions.
 
-2) Each engineering principle is divided into several subcategories of best practices (i.e. module management, version pinning etc). 
+**2)** Each engineering principle is divided into several subcategories of best practices (i.e. module management, version pinning etc). 
 
-3) Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
+**3)** Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
 
 **Note:** Many best practices are related to more than one engineering principle.
 
+---
+
 <h2 align="center">Engineering Principles</h2>
 
-**[Evolutionary Design](./docs/principles/evolutionary_design.md)** | **[YAGNI](./docs/principles/yagni.md)** | **[KISS](./docs/principles/kiss.md)** | **[Separation of Concerns](./docs/principles/separation_of_concerns.md)** | **[DRY](./docs/principles/everything_as_code.md)** | **[Determinism](./docs/principles/everything_as_code.md)** | **[Maintainability](./docs/principles/everything_as_code.md)**
+<p align="center">**[Evolutionary Design](./docs/principles/evolutionary_design.md)** | **[YAGNI](./docs/principles/yagni.md)** | **[KISS](./docs/principles/kiss.md)** | **[Separation of Concerns](./docs/principles/separation_of_concerns.md)** | **[DRY](./docs/principles/everything_as_code.md)** | **[Determinism](./docs/principles/everything_as_code.md)** | **[Maintainability](./docs/principles/everything_as_code.md)**</p>
