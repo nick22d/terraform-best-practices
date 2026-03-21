@@ -12,8 +12,10 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
 
 This project has been structured in the following way:
 
-engineering principles
+1) At the top, we have defined a set of engineering principles. These principles function as the drivers behind all of our infrastructure engineering decisions.
 
-each engineering principle is divided into several subcategories
+2) Each engineering principle is divided into several subcategories of best practices (i.e. module management, version pinning etc). 
 
-each subcategory is a collection of individual best practices
+3) Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
+
+***Note:*** Many best practices are related to more than one engineering principle.
