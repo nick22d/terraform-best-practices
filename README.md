@@ -23,6 +23,9 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
 
 <div align="center">
 This project has been structured in the following way:
+</div>
+
+<br>
 
 **1)** At the top, we have defined a set of engineering principles. These principles function as the drivers behind all of our infrastructure engineering decisions.
 
@@ -30,8 +33,10 @@ This project has been structured in the following way:
 
 **3)** Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
 
+<div align="center">
 **Note:** Many best practices are related to more than one engineering principle.
 </div>
+
 
 ---
 
