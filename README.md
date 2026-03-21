@@ -33,7 +33,7 @@ This project has been structured in the following way:
 
 **3)** Finally, each subcategory is a collection of individual best practices with each best practice referring to a specific technique (i.e. encrypting the terraform state at rest).
 
-<div align="center">Note: Many best practices are related to more than one engineering principle.</div>
+**Note:** Many best practices are related to more than one engineering principle.
 
 
 ---
