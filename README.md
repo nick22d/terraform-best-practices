@@ -1,4 +1,8 @@
-# Terraform Best Practices
+<h1 align="center">Terraform Best Practices</h1>
+
+<p align="center">
+    <img src="assets/images/root-image.png">
+</p>
 
 ## Overview
 
