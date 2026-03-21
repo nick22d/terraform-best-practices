@@ -18,6 +18,9 @@ Terraform remains one of the most popular IaC tools in the industry whose functi
     <img src="assets/images/structure.png">
 </p>
 
+<br>
+<br>
+
 This project has been structured in the following way:
 
 **1)** At the top, we have defined a set of engineering principles. These principles function as the drivers behind all of our infrastructure engineering decisions.
