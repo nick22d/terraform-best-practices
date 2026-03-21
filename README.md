@@ -20,6 +20,6 @@ This project has been structured in the following way:
 
 **Note:** Many best practices are related to more than one engineering principle.
 
-<h1 align="center">## Engineering Principles</h1>
+<h2 align="center">Engineering Principles</h2>
 
 **[Evolutionary Design](./docs/principles/evolutionary_design.md)** | **[YAGNI](./docs/principles/yagni.md)** | **[KISS](./docs/principles/kiss.md)** | **[Separation of Concerns](./docs/principles/separation_of_concerns.md)** | **[DRY](./docs/principles/everything_as_code.md)** | **[Determinism](./docs/principles/everything_as_code.md)** | **[Maintainability](./docs/principles/everything_as_code.md)**
