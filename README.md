@@ -35,10 +35,12 @@ This project has been structured in the following way:
 
 **Note:** Many best practices are related to more than one engineering principle.
 
-
 ---
 
 <h2 align="center">Engineering Principles</h2>
+
+<br>
+<br>
 
 <div align="center">
 
