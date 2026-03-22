@@ -40,7 +40,6 @@ This project has been structured in the following way:
 <h2 align="center">Engineering Principles</h2>
 
 <br>
-<br>
 
 <div align="center">
 
