@@ -12,5 +12,7 @@ https://developer.hashicorp.com/terraform/language/style
 
 GitOps workflow
 GitOps is a deployment methodology that uses Git repositories as the single source of truth for both application code and infrastructure configuration. When developers want to make changes, they submit pull requests to update the Git repository. Once merged, the GitOps tooling automatically applies those changes to the target environment. The GitOps development cycle creates a fully auditable, version-controlled deployment process, where Git serves as the control plane for your entire infrastructure and application lifecycle.
+
+Consistency: By using Git as the source of truth, you ensure GitOps deploys your infrastructure and applications consistently across environments, with development, staging, and production all managed through the same GitOps workflow.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/process-automation/gitops
 
