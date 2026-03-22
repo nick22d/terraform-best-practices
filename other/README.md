@@ -285,3 +285,60 @@ It is common for different teams to focus on different parts of your organizatio
 
 Terraform lets you reference data about other resources in your configuration without having to manage them in the same state file, allowing you to maintain distinct areas of ownership and infrastructure decoupling. You can use data sources to query a provider for more data about a particular resource, or reference output values from another state file using the remote state data source. HCP Terraform lets you explicitly grant access to your workspace state file to only the workspaces that need it, reducing access to potentially sensitive data. You can also use the tfe_outputs data source to access the outputs of another HCP Terraform workspace.
 https://developer.hashicorp.com/terraform/intro/phases/scale
+
+The following example shows a GitHub Actions workflow that automates Packer image builds and Terraform deployments:
+
+# .github/workflows/infrastructure.yml - Automated infrastructure pipeline
+name: Infrastructure Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packer/**'
+      - 'terraform/**'
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Packer
+        uses: hashicorp/setup-packer@main
+
+      - name: Initialize Packer
+        run: packer init packer/
+
+      - name: Validate Packer template
+        run: packer validate packer/
+
+      - name: Build image with HCP Packer
+        env:
+          HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
+          HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
+        run: packer build packer/golden-image.pkr.hcl
+
+  deploy-infrastructure:
+    needs: build-image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        working-directory: terraform/
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: terraform/
+        run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: terraform/
+        run: terraform apply -auto-approve
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/process-automation/fully-automated

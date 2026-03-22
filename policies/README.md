@@ -20,3 +20,49 @@ You can define policies that set standards for both your infrastructure configur
 
 Learn how to write a Sentinel policy for a Terraform Deployment and how to detect infrastructure drift and enforce policies.
 https://developer.hashicorp.com/terraform/intro/phases/govern
+
+nforce policies with Sentinel
+Fully-automated deployments require automated validation to prevent dangerous changes from reaching production. Manual code reviews and approval gates create bottlenecks that slow deployments. When operations teams manually review every infrastructure change, they become deployment bottlenecks. However, removing manual reviews without automated checks allows dangerous changes—like publicly exposing databases, deploying oversized instances, or removing security groups—to reach production.
+
+Sentinel provides policy as code for HCP Terraform, automatically validating infrastructure changes before deployment. You define policies that enforce security requirements, cost controls, and compliance standards. HCP Terraform evaluates these policies during the plan phase and blocks changes that violate policies, allowing safe changes to proceed automatically.
+
+The following example shows Sentinel policies that enforce security and cost controls:
+
+# Policy enforcement for automated deployments
+import "tfplan/v2" as tfplan
+
+# Require all S3 buckets to be private
+mandatory_s3_encryption = rule {
+  all tfplan.resource_changes as _, rc {
+    rc.type is "aws_s3_bucket" implies
+      rc.change.after.acl is "private" and
+      rc.change.after.versioning[0].enabled is true
+  }
+}
+
+# Limit EC2 instance sizes to control costs
+restrict_instance_types = rule {
+  all tfplan.resource_changes as _, rc {
+    rc.type is "aws_instance" implies
+      rc.change.after.instance_type in ["t3.micro", "t3.small", "t3.medium"]
+  }
+}
+
+# Require tags for resource management
+require_resource_tags = rule {
+  all tfplan.resource_changes as _, rc {
+    rc.type is "aws_instance" implies (
+      "Environment" in keys(rc.change.after.tags) and
+      "Owner" in keys(rc.change.after.tags)
+    )
+  }
+}
+
+main = rule {
+  mandatory_s3_encryption and
+  restrict_instance_types and
+  require_resource_tags
+}
+
+The Sentinel policies automatically validate every Terraform plan in your CI/CD pipeline. When a developer tries to create a public S3 bucket, deploy an oversized instance, or skip required tags, Sentinel blocks the change and explains the violation. Approved changes that meet all policies proceed automatically to deployment without manual review. Policy automation enables rapid deployments while maintaining security and compliance standards. HCP Terraform enforces these policies before applying changes, preventing policy violations from reaching your infrastructure.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/process-automation/fully-automated
