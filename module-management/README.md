@@ -188,3 +188,29 @@ Reusable modules should constrain only their minimum allowed versions of Terrafo
 
 Root modules should use a ~> constraint to set both a lower and upper bound on versions for each provider they depend on.
 https://developer.hashicorp.com/terraform/language/expressions/version-constraints
+
+You should use reusable modules in the following scenarios:
+
+You deploy the same group of resources multiple times with minor variations
+You need to enforce organizational standards and security policies across deployments
+Multiple teams need to provision similar infrastructure
+You need to maintain consistency across development, staging, and production environments
+
+Creating reusable infrastructure modules addresses the following strategic operational and security challenges:
+
+Remove deployment inconsistencies: Manual infrastructure provisioning creates configuration drift between environments. Modules enforce consistent configuration across all deployments.
+
+Reduce security policy violations: Teams deploying infrastructure without standardized security controls increase your organization's risk exposure. Each manual deployment requires security review and validation. Modules encode security best practices once, allowing you to reuse them across deployments.
+
+Increase developer productivity: Developers don't have to write infrastructure as code from scratch. They can reuse existing infrastructure code to provision infrastructure instead of spending time writing new code.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/modules
+
+Store modules in the Terraform registry
+You can find publicly available Terraform modules for configuring common infrastructure such as networking, databases, and monitoring, that are free to use. Terraform downloads these modules automatically when you specify the source and version in your configuration, making it easy to leverage community-maintained infrastructure patterns.
+
+Use the following best practices for module versioning:
+
+Use semantic versioning, such as v1.2.3. Semantic versioning uses three numbers: major version for breaking changes, minor version for new features, and patch version for bug fixes
+Tag releases in your version control system to mark stable versions
+Pin module versions in production environments to prevent unexpected updates
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/modules

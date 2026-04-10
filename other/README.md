@@ -342,3 +342,12 @@ jobs:
         working-directory: terraform/
         run: terraform apply -auto-approve
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/process-automation/fully-automated
+
+We recommend separating the configuration to deploy and configure the orchestrator from the configuration to deploy services to the orchestrator. For example, define your Kubernetes or Nomad cluster infrastructure in one configuration and define applications and services that run on the orchestrator in a different configuration. This separation provides better organization, clearer responsibilities, and easier maintenance.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/as-code/orchestration
+
+Terraform data sources query your cloud provider to find machine images built by Packer, removing hardcoded image IDs. Using data sources connects your Packer and Terraform workflows, ensuring Terraform always deploys your latest machine image.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/immutable-infrastructure/virtual-machines
+
+We recommend that your application environments (development, test, and production) be as similar as possible. Inconsistent environments, such as different operating systems, external dependencies like databases, and configurations, may impact your application's behavior. These inconsistencies are usually more prominent between development and production environments.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/development-environment
