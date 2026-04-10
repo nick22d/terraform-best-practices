@@ -25,4 +25,26 @@ after the pull request is merged because you can assume that the work on that br
 been completed. For new pieces of work, you will make new branches and go through the 
 pull request process again. This keeps the remote repository organized and uncluttered by 
 old branches
+
+Whenever you create a new branch, it is recommended that you base it off the most up-to-date 
+version of the relevant remote branch in the remote repository. Often this will be the main 
+branch (or whichever branch your team uses as the primary line of development). However, 
+depending on your team’s Git workflow, it may be another branch. 
+If you’re working on an existing branch on your own, it is recommended to update your 
+branch with the changes made to the relevant remote branch in the remote repository by 
+merging. And if you find yourself in a situation where you’re working on the same branch 
+as someone else, then you must always make sure to fetch and merge any changes that have 
+been made on that branch in the remote repository before continuing to work on it.
+
+“commit early, commit often.” 
+
+ The general rule is to group related changes 
+together. This allows you to keep your commits more organized. As you will see in the next 
+section, every commit also has an associated commit message. This can be used to provide a 
+description of what was updated in a specific commit.
+
+If you’re working on a Git project with other people, you should 
+check with your collaborators so you’re sure what they expect you to include in these messages.
+
+
 "learning git"

@@ -351,3 +351,23 @@ https://developer.hashicorp.com/well-architected-framework/define-and-automate-p
 
 We recommend that your application environments (development, test, and production) be as similar as possible. Inconsistent environments, such as different operating systems, external dependencies like databases, and configurations, may impact your application's behavior. These inconsistencies are usually more prominent between development and production environments.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/development-environment
+
+An example of a rule that you may encounter in a Git project is that individuals should work 
+only on their own topic branches and avoid working on other people’s topic branches. This 
+helps avoid merge conflicts 
+
+Write useful commit messages
+Commit messages help you and your teammates understand what changed and why.
+
+Use a short summary line that describes the intent of the change, then add details when the change needs extra context.
+
+<type>: <short summary>
+
+<optional details about what changed and why>
+
+Example:
+
+docs: add onboarding notes for version control
+
+Explain basic Git terms and how to make a first commit.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/version-control
