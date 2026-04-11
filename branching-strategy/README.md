@@ -36,7 +36,7 @@ merging. And if you find yourself in a situation where you’re working on the s
 as someone else, then you must always make sure to fetch and merge any changes that have 
 been made on that branch in the remote repository before continuing to work on it.
 
-“commit early, commit often.” 
+“commit early, commit often.” / “Write code atomically” usually means: Make changes in small, self-contained, indivisible units where each change is complete and safe on its own.
 
  The general rule is to group related changes 
 together. This allows you to keep your commits more organized. As you will see in the next 
