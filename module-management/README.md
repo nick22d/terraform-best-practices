@@ -214,3 +214,8 @@ Use semantic versioning, such as v1.2.3. Semantic versioning uses three numbers:
 Tag releases in your version control system to mark stable versions
 Pin module versions in production environments to prevent unexpected updates
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/modules
+
+Terraform includes a built-in testing framework that validates your configurations by creating ephemeral infrastructure, testing assertions against in-memory state, and automatically destroying test resources. Use Terraform test to validate that your modules create the expected resources with correct configurations without impacting existing infrastructure.
+
+Use Terraform test when you need to validate complex infrastructure changes, test Terraform modules before using them in production, or ensure infrastructure changes don't break existing functionality. The test framework integrates with HCP Terraform for automatic testing on branch pushes and pull requests.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing

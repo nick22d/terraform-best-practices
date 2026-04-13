@@ -66,3 +66,8 @@ main = rule {
 
 The Sentinel policies automatically validate every Terraform plan in your CI/CD pipeline. When a developer tries to create a public S3 bucket, deploy an oversized instance, or skip required tags, Sentinel blocks the change and explains the violation. Approved changes that meet all policies proceed automatically to deployment without manual review. Policy automation enables rapid deployments while maintaining security and compliance standards. HCP Terraform enforces these policies before applying changes, preventing policy violations from reaching your infrastructure.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/process-automation/fully-automated
+
+Sentinel is HashiCorp's policy-as-code framework that validates infrastructure configurations before Terraform applies them. Use Sentinel with HCP Terraform to enforce security policies, compliance requirements, and organizational standards across all infrastructure changes. Sentinel policies evaluate Terraform plans and block non-compliant changes before Terraform applies them.
+
+Use Sentinel when you need to enforce policies across teams, ensure security requirements are met automatically, or validate that infrastructure configurations comply with organizational standards before deployment.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing

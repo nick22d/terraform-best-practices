@@ -371,3 +371,7 @@ docs: add onboarding notes for version control
 
 Explain basic Git terms and how to make a first commit.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/define/version-control
+
+
+Use Sentinel for policy-as-code to validate infrastructure configurations before Terraform applies them, and Terraform test to verify that your configurations create the expected resources with correct configurations.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing
