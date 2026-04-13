@@ -219,3 +219,30 @@ Terraform includes a built-in testing framework that validates your configuratio
 
 Use Terraform test when you need to validate complex infrastructure changes, test Terraform modules before using them in production, or ensure infrastructure changes don't break existing functionality. The test framework integrates with HCP Terraform for automatic testing on branch pushes and pull requests.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing
+
+Structure your Terraform code into independent modules that define logical deployment boundaries. Each module manages a specific infrastructure component with its own lifecycle, enabling teams to deploy, test, and rollback components independently.
+
+Use separate modules when infrastructure components have different deployment schedules, ownership by different teams, or different rates of change. For example, networking infrastructure changes less frequently than application infrastructure, so separating them into different modules allows application teams to deploy without touching networking.
+
+The following example shows a Terraform directory structure organized for atomic deployments:
+
+infrastructure/
+├── networking/
+│   ├── main.tf           # VPC, subnets, routing
+│   ├── variables.tf
+│   └── outputs.tf
+├── database/
+│   ├── main.tf           # RDS instances
+│   ├── variables.tf
+│   └── outputs.tf
+├── application/
+│   ├── main.tf           # EC2, ECS, or Kubernetes resources
+│   ├── variables.tf
+│   └── outputs.tf
+└── monitoring/
+    ├── main.tf           # CloudWatch, alerting
+    ├── variables.tf
+    └── outputs.tf
+
+The directory structure creates four atomic deployment units. The networking team can deploy VPC changes independently, database administrators can deploy RDS updates separately, and application teams can deploy compute resources without coordinating with other teams. Each module contains only the resources it manages, creating clear boundaries.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/atomic-deployments
