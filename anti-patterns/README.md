@@ -402,3 +402,4 @@ Each account has multiple states inside.
 - override files (instead, use variables, modules, and environment-specific configurations for explicit and maintainable overrides)
 
 Avoid using the Terraform -target flag to deploy individual resources within a module, as this breaks dependency tracking and can create inconsistent state. Instead, organize resources into appropriately-sized modules that define your atomic boundaries.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/atomic-deployments
