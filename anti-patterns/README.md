@@ -400,3 +400,5 @@ Each account has multiple states inside.
 - a single repo for all Terraform in a large enterprise is usually an anti-pattern (but so is the practice of having too many repos)
 
 - override files (instead, use variables, modules, and environment-specific configurations for explicit and maintainable overrides)
+
+Avoid using the Terraform -target flag to deploy individual resources within a module, as this breaks dependency tracking and can create inconsistent state. Instead, organize resources into appropriately-sized modules that define your atomic boundaries.
