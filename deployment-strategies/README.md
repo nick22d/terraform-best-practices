@@ -83,3 +83,6 @@ jobs:
 
 The GitHub Actions workflow detects which modules changed and deploys only the affected components. If only application code changes, the pipeline deploys only the application module, skipping networking and database. Deploying only changed modules reduces deployment time and limits the scope of changes in each deployment.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/atomic-deployments
+
+when to use each deployment strategy
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/zero-downtime-deployments
