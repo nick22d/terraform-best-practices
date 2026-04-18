@@ -86,3 +86,81 @@ https://developer.hashicorp.com/well-architected-framework/define-and-automate-p
 
 when to use each deployment strategy
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/zero-downtime-deployments
+
+Deploy your green infrastructure environment only when needed, test it thoroughly, then switch traffic and tear down the blue environment to reduce costs.
+
+Use Terraform modules to deploy identical infrastructure for blue and green environments. Create a reusable module that defines your infrastructure, then instantiate it twice with different environment variables.
+
+The following example shows a Terraform module structure for blue/green infrastructure:
+
+variable "environment" {
+  description = "Environment identifier (blue or green)"
+  type        = string
+}
+
+resource "aws_instance" "web" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  tags = {
+    Name        = "web-server-${var.environment}"
+    Environment = var.environment
+  }
+}
+
+resource "aws_lb_target_group" "web" {
+  name     = "web-targets-${var.environment}"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+
+  health_check {
+    enabled           = true
+    healthy_threshold = 2
+    path              = "/health"
+  }
+}
+
+output "target_group_arn" {
+  value = aws_lb_target_group.web.arn
+}
+
+# Instantiate blue and green environments
+module "blue_infrastructure" {
+  source = "./modules/infrastructure"
+
+  environment   = "blue"
+  instance_type = "t3.micro"
+  ami_id        = var.blue_ami_id
+  vpc_id        = aws_vpc.main.id
+}
+
+module "green_infrastructure" {
+  source = "./modules/infrastructure"
+
+  environment   = "green"
+  instance_type = "t3.micro"
+  ami_id        = var.green_ami_id
+  vpc_id        = aws_vpc.main.id
+}
+
+# Switch traffic using variable
+variable "active_environment" {
+  description = "Active environment (blue or green)"
+  type        = string
+  default     = "blue"
+}
+
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = var.active_environment == "blue" ? module.blue_infrastructure.target_group_arn : module.green_infrastructure.target_group_arn
+  }
+}
+
+The Terraform configuration creates two identical infrastructure environments with different AMI IDs. The load balancer routes traffic based on the active_environment variable. To switch from blue to green, update active_environment = "green" and run terraform apply. The load balancer immediately routes traffic to the green environment, achieving zero-downtime deployment.
+https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/zero-downtime-deployments/infrastructure
