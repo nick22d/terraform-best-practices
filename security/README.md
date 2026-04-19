@@ -39,3 +39,12 @@ Establish a centralized logging infrastructure to collect audit data from all sy
 
 Create automated alerting for suspicious audit events. Set up monitoring for unusual access patterns, failed authentication attempts, or unauthorized configuration changes. Use log analysis tools to correlate events across different systems and identify potential security threats.
 https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/audit-trails
+
+The Center for Internet Security (CIS) Benchmarks provide detailed security configuration guidelines for operating systems, cloud platforms, and applications. Organizations adopt CIS benchmarks to meet compliance requirements like NIST 800-53, HIPAA, SOC 2, and PCI-DSS. Manual implementation creates inconsistencies across environments and makes auditing time-consuming.
+
+You can automate CIS benchmark enforcement by building security baselines into machine images with Packer and applying configurations at deployment with Terraform. Packer hardens operating systems during the image build process, ensuring every instance starts from a compliant baseline. Terraform applies infrastructure-level security controls like encryption, monitoring, and network policies when you deploy resources.
+
+CIS benchmarks define two implementation levels. Level 1 includes essential security controls that apply to most environments with minimal operational impact. Level 2 adds stricter controls for high-security environments that may affect system capabilities or performance.
+
+Each benchmark provides specific configuration recommendations organized by category like filesystem permissions, network settings, logging, and access controls. Organizations select the appropriate level based on security requirements and operational constraints. 
+https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/enforce-cis-benchmarks
