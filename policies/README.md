@@ -71,3 +71,6 @@ Sentinel is HashiCorp's policy-as-code framework that validates infrastructure c
 
 Use Sentinel when you need to enforce policies across teams, ensure security requirements are met automatically, or validate that infrastructure configurations comply with organizational standards before deployment.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing
+
+HCP Terraform uses Sentinel to enable granular policy control for your infrastructure. Sentinel is a language and policy framework, which restricts Terraform actions to defined, allowed behaviors. Policy authors manage Sentinel policies in HCP Terraform with policy sets, which are groups of policies. Organization owners control the scope of policy sets by applying certain policy sets to the entire organization or by selecting workspaces.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/policy-as-code

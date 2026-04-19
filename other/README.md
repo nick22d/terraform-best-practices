@@ -375,3 +375,8 @@ https://developer.hashicorp.com/well-architected-framework/define-and-automate-p
 
 Use Sentinel for policy-as-code to validate infrastructure configurations before Terraform applies them, and Terraform test to verify that your configurations create the expected resources with correct configurations.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/automate/testing
+
+Mapping your infrastructure components to ownership areas helps clarify who is responsible for what. In cloud environments, you need to distinguish between provider-managed services and customer-managed resources. Your documentation should cover who owns security for each layer, from physical infrastructure to application code.
+
+Responsibility matrices work well for showing ownership of security controls, compliance requirements, and operational tasks. These matrices typically include specific team names, roles, and contact information for each responsibility area. You also want to define escalation paths for when responsibilities overlap or conflict.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/document-shared-responsibilities

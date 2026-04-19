@@ -34,3 +34,8 @@ Vault securely stores sensitive information such as credentials and provides gra
 
 Vault also integrates into many popular CI/CD solutions such as GitHub, Jenkins, and CircleCI. Vault provides a central system to store and access data, which lets CI/CD pipelines push and pull secrets programmatically.
 https://developer.hashicorp.com/terraform/intro/phases/adopt
+
+Establish a centralized logging infrastructure to collect audit data from all systems. Use log aggregation tools to normalize different log formats and create a unified view of system activity. Implement log retention policies that align with your compliance requirements and legal obligations.
+
+Create automated alerting for suspicious audit events. Set up monitoring for unusual access patterns, failed authentication attempts, or unauthorized configuration changes. Use log analysis tools to correlate events across different systems and identify potential security threats.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/audit-trails
