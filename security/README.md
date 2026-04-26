@@ -48,3 +48,6 @@ CIS benchmarks define two implementation levels. Level 1 includes essential secu
 
 Each benchmark provides specific configuration recommendations organized by category like filesystem permissions, network settings, logging, and access controls. Organizations select the appropriate level based on security requirements and operational constraints. 
 https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/enforce-cis-benchmarks
+
+We recommend that you define a consistent TTL for every certificate in your infrastructure and automatically rotate your certificates prior to their expiration. When implementing automatic certificate rotation, set up your alerting solution to notify you before your certificates are invalid in case services or infrastructure fails to reload the new certificate.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/secure-applications/certificates/rotate

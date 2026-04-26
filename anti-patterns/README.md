@@ -403,3 +403,5 @@ Each account has multiple states inside.
 
 Avoid using the Terraform -target flag to deploy individual resources within a module, as this breaks dependency tracking and can create inconsistent state. Instead, organize resources into appropriately-sized modules that define your atomic boundaries.
 https://developer.hashicorp.com/well-architected-framework/define-and-automate-processes/deploy/atomic-deployments
+
+https://developer.hashicorp.com/well-architected-framework/secure-systems/secure-applications/ci-cd-secrets/anti-patterns
