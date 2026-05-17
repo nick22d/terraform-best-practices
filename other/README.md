@@ -380,3 +380,18 @@ Mapping your infrastructure components to ownership areas helps clarify who is r
 
 Responsibility matrices work well for showing ownership of security controls, compliance requirements, and operational tasks. These matrices typically include specific team names, roles, and contact information for each responsibility area. You also want to define escalation paths for when responsibilities overlap or conflict.
 https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/document-shared-responsibilities
+
+Tag cloud resources with their classification level in Terraform so that security tools, cost management systems, and audit tooling can identify sensitive infrastructure.
+
+resource "aws_s3_bucket" "app_data" {
+  bucket = "app-confidential-data"
+
+  tags = {
+    data_classification = "confidential"
+    owner               = "platform-team"
+    environment         = "production"
+  }
+}
+
+The data_classification tag represents sensitivity levels visible across your cloud console, cost dashboards, and security tooling. Use a Sentinel policy in HCP Terraform to enforce that all resources include a valid classification tag before plans apply.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/data/classify-data
