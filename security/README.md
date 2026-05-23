@@ -51,3 +51,9 @@ https://developer.hashicorp.com/well-architected-framework/secure-systems/compli
 
 We recommend that you define a consistent TTL for every certificate in your infrastructure and automatically rotate your certificates prior to their expiration. When implementing automatic certificate rotation, set up your alerting solution to notify you before your certificates are invalid in case services or infrastructure fails to reload the new certificate.
 https://developer.hashicorp.com/well-architected-framework/secure-systems/secure-applications/certificates/rotate
+
+For secrets found in version control, treat the commit history as compromised and rotate regardless of whether the secret appears active.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/data/classify-data
+
+Data at rest requires encryption of both the data and the underlying storage service. If you only encrypt the data, or only encrypt the storage service, the data is still vulnerable to unauthorized access.
+https://developer.hashicorp.com/well-architected-framework/secure-systems/data/protect-sensitive-data
