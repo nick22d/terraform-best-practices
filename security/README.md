@@ -57,3 +57,6 @@ https://developer.hashicorp.com/well-architected-framework/secure-systems/data/c
 
 Data at rest requires encryption of both the data and the underlying storage service. If you only encrypt the data, or only encrypt the storage service, the data is still vulnerable to unauthorized access.
 https://developer.hashicorp.com/well-architected-framework/secure-systems/data/protect-sensitive-data
+
+How to remediate leaked secrets
+https://developer.hashicorp.com/well-architected-framework/secure-systems/secrets/manage-leaked-secrets/remediate-leaked-secrets
