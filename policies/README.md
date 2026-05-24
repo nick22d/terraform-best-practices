@@ -74,3 +74,6 @@ https://developer.hashicorp.com/well-architected-framework/define-and-automate-p
 
 HCP Terraform uses Sentinel to enable granular policy control for your infrastructure. Sentinel is a language and policy framework, which restricts Terraform actions to defined, allowed behaviors. Policy authors manage Sentinel policies in HCP Terraform with policy sets, which are groups of policies. Organization owners control the scope of policy sets by applying certain policy sets to the entire organization or by selecting workspaces.
 https://developer.hashicorp.com/well-architected-framework/secure-systems/compliance-and-governance/policy-as-code
+
+detect configuration drift
+https://developer.hashicorp.com/well-architected-framework/optimize-systems/monitor-system-health/detect-configuration-drift
